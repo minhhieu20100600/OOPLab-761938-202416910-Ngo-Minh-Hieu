@@ -50,6 +50,7 @@ abstract public class Media {
             return Float.compare(m1.getCost(), m2.getCost());
         }
     };
+    //
 
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new Comparator<Media>() {
         public int compare(Media m1, Media m2) {
