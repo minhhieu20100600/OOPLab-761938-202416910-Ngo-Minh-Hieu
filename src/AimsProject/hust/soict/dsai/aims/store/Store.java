@@ -45,11 +45,11 @@ public class Store {
         }
         return null;
     }
-
+    // update store
     public void printStore() {
         System.out.println("*** STORE ITEMS ***");
         for (int i = 0; i < qtyStore; i++) {
             System.out.println((i + 1) + ". " + itemsInStore[i].toString());
         }
     }
-}
+}}
