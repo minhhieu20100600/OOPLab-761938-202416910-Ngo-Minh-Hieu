@@ -5,6 +5,7 @@ import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Book;
 
 public class CartTest {
+    
     public static void main(String[] args) {
         Cart cart = new Cart();
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("Test DVD", "Action", "Dir", 120, 10.5f);
@@ -17,5 +18,6 @@ public class CartTest {
         System.out.println("Match 'Test DVD': " + cart.isMatch("Test DVD"));
         cart.removeMedia(dvd1);
         System.out.println("After remove: \\n" + cart);
+        //
     }
 }
