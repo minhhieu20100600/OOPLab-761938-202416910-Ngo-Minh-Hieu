@@ -194,6 +194,7 @@ public class Aims {
                 break;
         }
     }
+    //
 
     private static Media findInCart(int id) {
         for (Media item : cart.getItems()) {
@@ -208,6 +209,7 @@ public class Aims {
         System.out.println(\"Update Store Menu - Adding Aladdin DVD\");
         store.addMedia(new DigitalVideoDisc(\"Aladdin\", \"Animation\", \"John Musker\", 90, 18.99f));
         System.out.println(\"Updated!\");
-    }
+    // update store
 }
-
+}
+    
