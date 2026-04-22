@@ -52,4 +52,5 @@ public class Store {
             System.out.println((i + 1) + ". " + itemsInStore[i].toString());
         }
     }
-}}
+    //
+}
