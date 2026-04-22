@@ -19,6 +19,7 @@ public class CompactDisc extends Media implements Playable {
     public String toString() {
         return String.format("CD - %s - %s by %s: %.2f $", getTitle(), getCategory(), artist, getCost());
     }
+    //
 
     @Override
     public void play() {
