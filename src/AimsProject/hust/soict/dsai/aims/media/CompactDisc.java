@@ -25,4 +25,5 @@ public class CompactDisc extends Media implements Playable {
         System.out.println("Playing CD by " + artist);
         System.out.println("CD title: " + getTitle());
     }
+    //
 }
