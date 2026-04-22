@@ -42,6 +42,7 @@ abstract public class Media {
         Media media = (Media) o;
         return title != null ? title.equals(media.title) : media.title == null;
     }
+    //
 
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new Comparator<Media>() {
         public int compare(Media m1, Media m2) {
