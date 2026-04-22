@@ -17,4 +17,5 @@ public class Book extends Media {
     public String toString() {
         return String.format("Book - %s - %s by %s: %.2f $", getTitle(), getCategory(), author, getCost());
     }
+    //
 }
