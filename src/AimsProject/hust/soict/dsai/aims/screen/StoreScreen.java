@@ -45,9 +45,24 @@ public class StoreScreen extends JFrame {
     private JMenuBar createMenuBar() {
         JMenu menu = new JMenu("Options");
 
+        JMenu updateStoreMenu = new JMenu("Update Store");
+        JMenuItem addBook = new JMenuItem("Add Book");
+        addBook.addActionListener(event -> new AddBookToStoreScreen(store, this));
+
+        JMenuItem addCd = new JMenuItem("Add CD");
+        addCd.addActionListener(event -> new AddCompactDiscToStoreScreen(store, this));
+
+        JMenuItem addDvd = new JMenuItem("Add DVD");
+        addDvd.addActionListener(event -> new AddDigitalVideoDiscToStoreScreen(store, this));
+
+        updateStoreMenu.add(addBook);
+        updateStoreMenu.add(addCd);
+        updateStoreMenu.add(addDvd);
+
         JMenuItem viewCart = new JMenuItem("View Cart");
         viewCart.addActionListener(event -> new CartScreen(cart, this));
 
+        menu.add(updateStoreMenu);
         menu.add(viewCart);
 
         JMenuBar menuBar = new JMenuBar();
