@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import hust.soict.dsai.aims.store.Store;
 
 public abstract class AbstractAddItemScreen extends JFrame {
+    // Lab4 branch: add media screens
     protected final Store store;
     protected final StoreScreen storeScreen;
 
