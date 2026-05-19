@@ -5,7 +5,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -28,17 +35,41 @@ public class StoreScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        setJMenuBar(createMenuBar());
         add(createHeader(), BorderLayout.NORTH);
         add(createCenter(), BorderLayout.CENTER);
 
         setVisible(true);
     }
 
+    private JMenuBar createMenuBar() {
+        JMenu menu = new JMenu("Options");
+
+        JMenuItem viewCart = new JMenuItem("View Cart");
+        viewCart.addActionListener(event -> new CartScreen(cart, this));
+
+        menu.add(viewCart);
+
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(menu);
+        return menuBar;
+    }
+
     private JPanel createHeader() {
         JPanel header = new JPanel();
+        header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
         header.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
-        header.setBackground(Color.WHITE);
-        header.add(new javax.swing.JLabel("AIMS Store"));
+
+        JLabel title = new JLabel("AIMS Store");
+        title.setFont(title.getFont().deriveFont(28.0f));
+        title.setForeground(new Color(32, 82, 149));
+
+        JButton cartButton = new JButton("View Cart");
+        cartButton.addActionListener(event -> new CartScreen(cart, this));
+
+        header.add(title);
+        header.add(Box.createHorizontalGlue());
+        header.add(cartButton);
         return header;
     }
 
