@@ -21,6 +21,7 @@ import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreScreen extends JFrame {
+    // Lab4 branch: store screen
     private final Store store;
     private final Cart cart;
     private JPanel centerPanel;
