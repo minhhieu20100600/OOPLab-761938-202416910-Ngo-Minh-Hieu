@@ -18,6 +18,7 @@ import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 
 public class CartScreen extends JFrame {
+    // Lab4 branch: cart screen
     private final Cart cart;
     private final StoreScreen storeScreen;
     private final DefaultTableModel tableModel;
