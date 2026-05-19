@@ -1,0 +1,4 @@
+Lab04 Swing GUI Programming
+
+Main GUI entry point:
+- hust.soict.dsai.aims.screen.AimsScreen
