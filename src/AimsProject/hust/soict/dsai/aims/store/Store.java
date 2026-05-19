@@ -1,6 +1,8 @@
 package hust.soict.dsai.aims.store;
 
 import hust.soict.dsai.aims.media.Media;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Store {
     public static final int MAX_STORE = 100;
@@ -49,8 +51,15 @@ public class Store {
     public void printStore() {
         System.out.println("*** STORE ITEMS ***");
         for (int i = 0; i < qtyStore; i++) {
-            System.out.println((i + 1) + ". " + itemsInStore[i].toString());
+            System.out.println(itemsInStore[i].getId() + ". " + itemsInStore[i].toString());
         }
     }
-    //
+
+    public List<Media> getItemsInStore() {
+        List<Media> items = new ArrayList<>();
+        for (int i = 0; i < qtyStore; i++) {
+            items.add(itemsInStore[i]);
+        }
+        return items;
+    }
 }

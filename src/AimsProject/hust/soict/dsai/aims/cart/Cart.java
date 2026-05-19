@@ -94,6 +94,19 @@ public class Cart {
         System.out.println("Cart sorted by cost-title.");
     }
 
+    public Media findById(int id) {
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id) {
+                return media;
+            }
+        }
+        return null;
+    }
+
+    public void clear() {
+        itemsOrdered.clear();
+    }
+
     public List<Media> getItems() {
         return new ArrayList<>(itemsOrdered);
     }
