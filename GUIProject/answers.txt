@@ -2,3 +2,15 @@ Lab04 Swing GUI Programming
 
 Main GUI entry point:
 - hust.soict.dsai.aims.screen.AimsScreen
+
+Lab05 JavaFX & Exception Handling
+
+Main JavaFX entry points:
+- hust.soict.dsai.javafx.painter.Painter
+- hust.soict.dsai.aims.customer.AimsCustomerApplication
+
+Implemented lab05 updates:
+- JavaFX painter with pen, eraser, and clear actions
+- JavaFX AIMS store/cart screens with scene switching
+- `PlayerException`, `Track`, and checked `play()` handling
+- `Media.equals()` and `Media.compareTo()` updated for title + cost
