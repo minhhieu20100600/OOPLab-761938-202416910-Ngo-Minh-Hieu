@@ -1,6 +1,7 @@
 package hust.soict.dsai.aims.screen;
 
 import java.awt.BorderLayout;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.store.Store;
 
 public class AddCompactDiscToStoreScreen extends AbstractAddItemScreen {
@@ -26,12 +28,15 @@ public class AddCompactDiscToStoreScreen extends AbstractAddItemScreen {
                 String[] tracks = tracksField.getText().trim().isEmpty()
                         ? new String[0]
                         : tracksField.getText().split("\\s*,\\s*");
+                Track[] trackObjects = Arrays.stream(tracks)
+                        .map(title -> new Track(title, 0))
+                        .toArray(Track[]::new);
                 CompactDisc cd = new CompactDisc(
                         titleField.getText().trim(),
                         categoryField.getText().trim(),
                         artistField.getText().trim(),
                         parseFloat(costField.getText(), "Cost"),
-                        tracks);
+                        trackObjects);
                 store.addMedia(cd);
                 showSuccessMessage(cd.getTitle());
             } catch (IllegalArgumentException exception) {

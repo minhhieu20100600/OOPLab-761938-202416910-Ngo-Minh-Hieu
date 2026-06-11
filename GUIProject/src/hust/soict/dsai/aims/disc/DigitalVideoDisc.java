@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.disc;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 
@@ -13,6 +14,9 @@ public class DigitalVideoDisc extends Media implements Playable {
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         super(title, category, cost);
+        if (length < 0) {
+            throw new IllegalArgumentException("Length must be non-negative.");
+        }
         this.director = director;
         this.length = length;
     }
@@ -26,7 +30,11 @@ public class DigitalVideoDisc extends Media implements Playable {
     }
 
     @Override
-    public void play() {
+    public void play() throws PlayerException {
+        if (length <= 0) {
+            System.err.println("ERROR: DVD length is invalid: " + length);
+            throw new PlayerException("ERROR: DVD " + getTitle() + " cannot be played.");
+        }
         System.out.println("Playing DVD: " + getTitle());
         System.out.println("DVD length: " + length);
     }

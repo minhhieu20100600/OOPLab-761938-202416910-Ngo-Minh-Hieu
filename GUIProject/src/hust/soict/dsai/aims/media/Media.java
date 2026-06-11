@@ -1,8 +1,9 @@
 package hust.soict.dsai.aims.media;
 
+import java.util.Objects;
 import java.util.Comparator;
 
-abstract public class Media {
+abstract public class Media implements Comparable<Media> {
     private static int nbMedias = 0;
     private int id;
     private String title;
@@ -10,12 +11,16 @@ abstract public class Media {
     private float cost;
 
     public Media(String title) {
-        this.title = title;
-        nbMedias++;
-        id = nbMedias;
+        this(title, null, 0f);
     }
 
     public Media(String title, String category, float cost) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Title must not be empty.");
+        }
+        if (cost < 0) {
+            throw new IllegalArgumentException("Cost must be non-negative.");
+        }
         this.title = title;
         this.category = category;
         this.cost = cost;
@@ -40,7 +45,24 @@ abstract public class Media {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Media media = (Media) o;
-        return title != null ? title.equals(media.title) : media.title == null;
+        return Float.compare(media.cost, cost) == 0 && Objects.equals(title, media.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, cost);
+    }
+
+    @Override
+    public int compareTo(Media other) {
+        if (other == null) {
+            return 1;
+        }
+        int cmp = title.compareTo(other.title);
+        if (cmp != 0) {
+            return cmp;
+        }
+        return Float.compare(cost, other.cost);
     }
     //
 

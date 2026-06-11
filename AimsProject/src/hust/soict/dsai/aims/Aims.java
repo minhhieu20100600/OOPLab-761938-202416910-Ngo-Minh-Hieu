@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.playable.Playable;
 import hust.soict.dsai.aims.store.Store;
 
@@ -46,7 +48,10 @@ public class Aims {
         store.addMedia(new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 124, 24.95f));
         store.addMedia(new Book("1984", "Fiction", "George Orwell", 15.0f));
         store.addMedia(new CompactDisc("Abbey Road", "Rock", "The Beatles", 12.99f,
-                new String[] {"Come Together", "Something"}));
+                new Track[] {
+                        new Track("Come Together", 259),
+                        new Track("Something", 182)
+                }));
     }
 
     public static void showMenu() {
@@ -291,7 +296,11 @@ public class Aims {
 
     private static void playMedia(Media media) {
         if (media instanceof Playable) {
-            ((Playable) media).play();
+            try {
+                ((Playable) media).play();
+            } catch (PlayerException exception) {
+                System.err.println(exception.getMessage());
+            }
         } else {
             System.out.println("This media cannot be played.");
         }

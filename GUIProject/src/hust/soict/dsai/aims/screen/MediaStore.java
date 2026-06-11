@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 
@@ -39,8 +40,12 @@ public class MediaStore extends JPanel {
         if (media instanceof Playable) {
             JButton playButton = new JButton("Play");
             playButton.addActionListener(event -> {
-                ((Playable) media).play();
-                JOptionPane.showMessageDialog(this, "Playing: " + media.getTitle());
+                try {
+                    ((Playable) media).play();
+                    JOptionPane.showMessageDialog(this, "Playing: " + media.getTitle());
+                } catch (PlayerException exception) {
+                    JOptionPane.showMessageDialog(this, exception.getMessage());
+                }
             });
             buttonPanel.add(playButton);
         }

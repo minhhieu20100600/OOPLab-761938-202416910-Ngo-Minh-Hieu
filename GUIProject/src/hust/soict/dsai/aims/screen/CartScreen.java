@@ -14,6 +14,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.playable.Playable;
 
@@ -124,8 +125,12 @@ public class CartScreen extends JFrame {
             return;
         }
         if (media instanceof Playable) {
-            ((Playable) media).play();
-            JOptionPane.showMessageDialog(this, "Playing: " + media.getTitle());
+            try {
+                ((Playable) media).play();
+                JOptionPane.showMessageDialog(this, "Playing: " + media.getTitle());
+            } catch (PlayerException exception) {
+                JOptionPane.showMessageDialog(this, exception.getMessage());
+            }
             return;
         }
         JOptionPane.showMessageDialog(this, "This media cannot be played.");
